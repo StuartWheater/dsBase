@@ -46,10 +46,8 @@ length.2.test<-length(X)
 length.test.vector<-rep(NA,num.factors)
 
 for(g in 1:num.factors){
-activation.text.0<-paste0("INDEX.factors[",g,"]")
-active.factor.name<-eval(parse(text=activation.text.0))
+active.factor.name<-INDEX.factors[g]
 active.factor<-eval(parse(text=active.factor.name), envir = parent.frame())
-active.factor
 length.test.vector[g]<-length(active.factor)
 }
 
