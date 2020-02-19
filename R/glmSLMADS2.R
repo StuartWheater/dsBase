@@ -76,9 +76,6 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)                  #
 #nfilter.string<-as.numeric(thr$nfilter.string)             #
 #############################################################
 
-
-
-
 errorMessage2<-"No errors"
 # Get the value of the 'data' parameter provided as character on the client side
 # Same is done for offset and weights lower down function
@@ -161,19 +158,25 @@ errorMessage2<-"No errors"
 	if(is.null(offset))
 	{
 	varname.offset<-NULL
+	#offset.to.use <- NULL
+	cbindtext.offset <- paste0("offset.to.use <- NULL")
+	eval(parse(text=cbindtext.offset), envir = parent.frame())
 	}else{
 	varname.offset <- paste0(offset)
 	}
 
 	if(!(is.null(offset)))
 		{
-		cbindtext.offset <- paste0("cbind(", offset,")")
-		offset <- eval(parse(text=cbindtext.offset), envir = parent.frame())
+		cbindtext.offset <- paste0("offset.to.use <- cbind(", offset,")")
+		eval(parse(text=cbindtext.offset), envir = parent.frame())
 		}
 
 	if(is.null(weights))
 	{
 	varname.weights<-NULL
+	cbindtext.weights <- paste0("weights.to.use <- NULL")
+	eval(parse(text=cbindtext.weights), envir = parent.frame())
+	#weights.to.use <- NULL
 	}else{
 	varname.weights <- paste0(weights)
 	}
@@ -181,11 +184,13 @@ errorMessage2<-"No errors"
 
 	if(!(is.null(weights)))
 		{
-		cbindtext.weights <- paste0("cbind(", weights,")")
-		weights <- eval(parse(text=cbindtext.weights), envir = parent.frame())
+		cbindtext.weights <- paste0("weights.to.use <- cbind(", weights,")")
+		eval(parse(text=cbindtext.weights), envir = parent.frame())
+		#cbindtext.weights <- paste0("cbind(", weights,")")
+		#weights.to.use <- eval(parse(text=cbindtext.weights), envir = parent.frame())
 		}
 
-	mg <- stats::glm(formula2use, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)
+	mg <- stats::glm(formula2use, family=family, x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
 	
 y.vect<-mg$y
 X.mat<-mg$x
@@ -311,8 +316,12 @@ disclosure.risk<-1
 
 if(disclosure.risk==0)
 {
-	mg <- stats::glm(formula2use, family=family, offset=offset, weights=weights, data=dataDF)
-
+	mg <- stats::glm(formula2use, family=family, offset=offset.to.use, weights=weights.to.use, data=dataDF)
+  
+	Nvalid <- length(mg$residuals)
+	Nmissing <- length(mg$na.action)
+	Ntotal <- Nvalid+Nmissing
+	
 	outlist<-list(rank=mg$rank, aic=mg$aic, 
              iter=mg$iter, converged=mg$converged,
 			 boundary=mg$boundary, na.action=options("na.action"), call=summary(mg)$call, terms=summary(mg)$terms,
@@ -356,6 +365,9 @@ if(disclosure.risk==0)
 
     outlist<-list(outlist.1,outlist.2,outlist.gos,outlist.y,outlist.x,outlist.w,outlist.o)
 }
+	#tidy up in parent.frame()
+	eval(quote(rm(offset.to.use)), envir = parent.frame())
+	eval(quote(rm(weights.to.use)), envir = parent.frame())
 	return(outlist)
 
 }
