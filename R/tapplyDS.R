@@ -78,6 +78,7 @@ all.complete<-all.complete&stats::complete.cases(current.factor)
 X.complete<-X[all.complete]
 
 for(k in 1:num.factors){
+
   activation.text.b<-paste0(INDEX.factors[k])
   current.factor <- eval(parse(text=activation.text.b), envir = parent.frame())
   
@@ -90,13 +91,12 @@ for(k in 1:num.factors){
 #convert INDEX.names format from transmittable to actionable form (a list of vectors)
    INDEX.names.list<-paste0("list(",INDEX.names.transmit,")")
    INDEX<-eval(parse(text=INDEX.names.list))
-   
+
  ##################
  #disclosure traps#
  ##################
-   
    N.count <- tapply(X.complete,INDEX,base::length)
-   
+
    if(min(N.count)<nfilter.tab && min(N.count) > 0){
    return.message<-"ERROR: at least one group defined by INDEX has < nfilter.tab members. The output cannot therefore be returned to the clientside. But the function ds.tapply.assign may still be used to write the output to the data servers with no clientside return"
    return(return.message)
