@@ -124,11 +124,9 @@ for(k in 1:num.factors){
 
 		if(num.factors==2){
 
-		factor1.levels <- NA
 		activation.text.f<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
 		eval(parse(text=activation.text.f))
 
-		factor2.levels <- NA
 		activation.text.g<-paste0("factor2.levels<-levels(",INDEX.factors[2],")")
 		eval(parse(text=activation.text.g))
 
