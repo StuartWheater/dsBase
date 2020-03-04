@@ -86,7 +86,7 @@ for(k in 1:num.factors){
   eval(parse(text=activation.text.b), envir = parent.frame())
 
   activation.text.c<-paste0(INDEX.factors[k], "<- current.factor[", all.complete, "]")
-  eval(parse(text=activation.text.c))
+  eval(parse(text=activation.text.c), envir = parent.frame())
  }
 
 #Outcome vector and index factors now all reduced to complete cases only
