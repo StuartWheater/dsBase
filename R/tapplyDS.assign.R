@@ -76,7 +76,7 @@ for(j in 1:num.factors){
 activation.text.a<-paste0("current.factor <-",INDEX.factors[j])
 eval(parse(text=activation.text.a), envir = parent.frame())
 
-all.complete<-all.complete&stats::complete.cases(current.factor)
+all.complete<-all.complete&stats::complete.cases(INDEX.factors[j])
 }
 
 X.complete<-X[all.complete]
