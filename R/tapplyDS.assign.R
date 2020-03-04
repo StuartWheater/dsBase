@@ -85,7 +85,7 @@ for(k in 1:num.factors){
   activation.text.b<-paste0("current.factor <-",INDEX.factors[k])
   eval(parse(text=activation.text.b), envir = parent.frame())
 
-  activation.text.c<-paste0(INDEX.factors[k], "<- current.factor[all.complete]")
+  activation.text.c<-paste0(INDEX.factors[k], "<- current.factor[", all.complete, "]")
   eval(parse(text=activation.text.c))
  }
 
