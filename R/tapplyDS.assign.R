@@ -18,7 +18,7 @@ tapplyDS.assign <- function(X.name, INDEX.names.transmit, FUN.name){
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr<-listDisclosureSettingsDS()                                       #
+thr<-listDisclosureSettingsDS()                                         #
 nfilter.tab<-as.numeric(thr$nfilter.tab)                                #
 #nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
 nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
@@ -51,7 +51,6 @@ for(g in 1:num.factors){
 activation.text.0<-paste0("INDEX.factors[",g,"]")
 active.factor.name<-eval(parse(text=activation.text.0))
 active.factor<-eval(parse(text=active.factor.name), envir = parent.frame())
-active.factor
 length.test.vector[g]<-length(active.factor)
 }
 
@@ -76,7 +75,7 @@ for(j in 1:num.factors){
 activation.text.a<-paste0("current.factor <-",INDEX.factors[j])
 eval(parse(text=activation.text.a), envir = parent.frame())
 
-all.complete<-all.complete&stats::complete.cases(INDEX.factors[j])
+all.complete<-all.complete&stats::complete.cases(current.factor)
 }
 
 X.complete<-X[all.complete]
@@ -85,8 +84,7 @@ for(k in 1:num.factors){
   activation.text.b<-paste0("current.factor <-",INDEX.factors[k])
   eval(parse(text=activation.text.b), envir = parent.frame())
 
-  activation.text.c<-paste0(INDEX.factors[k], "<- current.factor[", all.complete, "]")
-  print(paste0('[[', activation.text.c, ']]'))
+  activation.text.c<-paste0(INDEX.factors[k], "<- current.factor[all.complete]")
   eval(parse(text=activation.text.c), envir = parent.frame())
  }
 
