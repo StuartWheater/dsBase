@@ -23,6 +23,7 @@ AggregateMethods:
     dataFrameSubsetDS1,
     densityGridDS,
     dimDS,
+    existsDS,
     glmDS1,
     glmDS2,
     glmerSLMADS2,
