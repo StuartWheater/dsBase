@@ -20,7 +20,6 @@
 #'\item "\code{\link{S4}}"
 #'\item "\code{\link{NULL}}"
 #'\item "\code{\link{function}}"
-#'\item "\code{\link{externalptr}}"
 #'\item "\code{\link{environment}}"
 #'}
 #'@return
