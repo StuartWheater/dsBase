@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("rmDS::smk::setup")
+context("asFactorDS1::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,27 +20,23 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("rmDS::smk::simple")
-test_that("simple rmDS", {
-    expect_false(exists("input"))
+context("asFactorDS1::smk::simple")
+test_that("simple asFactorDS1", {
+    input <- c(2.0, 1.0, 3.0, 3.0, 3.0, 1.0, 2.0, 2.0, 1.0, 2.0)
 
-    input <- "value"
+    res <- asFactorDS1("input")
 
-    expect_true(exists("input"))
-
-    res <- rmDS("input")
-
-    expect_false(exists("input"))
-
-    expect_equal(class(res), "list")
-    expect_length(res, 1)
-    expect_equal(res$return.message, "Object <input> successfully deleted")
+    expect_equal(class(res), "character")
+    expect_length(res, 3)
+    expect_equal(res[1], "1")
+    expect_equal(res[2], "2")
+    expect_equal(res[3], "3")
 })
 
 #
 # Done
 #
 
-context("rmDS::smk::shutdown")
+context("asFactorDS1::smk::shutdown")
 
-context("rmDS::smk::done")
+context("asFactorDS1::smk::done")

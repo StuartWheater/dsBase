@@ -12,35 +12,36 @@
 # Set up
 #
 
-context("rmDS::smk::setup")
-
-set.standard.disclosure.settings()
+context("listDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rmDS::smk::simple")
-test_that("simple rmDS", {
-    expect_false(exists("input"))
+context("listDS::smk::simple")
+test_that("simple listDS", {
+    input    <- list(v1 = c(1, 2, 3), v2 = c(4, 5, 6))
+    eltnames <- c('n1', 'n2')
 
-    input <- "value"
-
-    expect_true(exists("input"))
-
-    res <- rmDS("input")
-
-    expect_false(exists("input"))
+    res <- listDS(input, eltnames)
 
     expect_equal(class(res), "list")
-    expect_length(res, 1)
-    expect_equal(res$return.message, "Object <input> successfully deleted")
+    expect_length(res, 2)
+    expect_length(res[[1]], 3)
+    expect_length(res[[2]], 3)
+
+    res.names <- names(res)
+
+    expect_equal(class(res.names), "character")
+    expect_length(res.names, 2)
+    expect_equal(res.names[1], 'n1')
+    expect_equal(res.names[2], 'n2')
 })
 
 #
 # Done
 #
 
-context("rmDS::smk::shutdown")
+context("listDS::smk::shutdown")
 
-context("rmDS::smk::done")
+context("listDS::smk::done")

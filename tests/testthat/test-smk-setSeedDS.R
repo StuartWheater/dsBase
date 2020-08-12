@@ -12,35 +12,29 @@
 # Set up
 #
 
-context("rmDS::smk::setup")
-
-set.standard.disclosure.settings()
+context("setSeedDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rmDS::smk::simple")
-test_that("simple rmDS", {
-    expect_false(exists("input"))
+context("setSeedDS::smk::simple")
+test_that("simple setSeedDS", {
+    seedtext    <- "19"
+    kind        <- NULL
+    normal.kind <- NULL
 
-    input <- "value"
-
-    expect_true(exists("input"))
-
-    res <- rmDS("input")
-
-    expect_false(exists("input"))
+    res <- setSeedDS(seedtext, kind, normal.kind)
 
     expect_equal(class(res), "list")
     expect_length(res, 1)
-    expect_equal(res$return.message, "Object <input> successfully deleted")
+    expect_length(res$seed.as.set, 626)
 })
 
 #
 # Done
 #
 
-context("rmDS::smk::shutdown")
+context("setSeedDS::smk::shutdown")
 
-context("rmDS::smk::done")
+context("setSeedDS::smk::done")

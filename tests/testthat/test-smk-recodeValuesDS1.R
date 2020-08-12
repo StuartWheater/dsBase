@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("rmDS::smk::setup")
+context("recodeValuesDS1::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,27 +20,22 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("rmDS::smk::simple")
-test_that("simple rmDS", {
-    expect_false(exists("input"))
+test_that("simple recodeValuesDS1", {
+    input          <- c(1, 2, 3, 4, 1, 3)
+    values2replace <- "1,3"
+    new.values     <- "10,30"
 
-    input <- "value"
+    res <- recodeValuesDS1("input", values2replace, new.values)
 
-    expect_true(exists("input"))
-
-    res <- rmDS("input")
-
-    expect_false(exists("input"))
-
-    expect_equal(class(res), "list")
+    expect_equal(class(res), "character")
     expect_length(res, 1)
-    expect_equal(res$return.message, "Object <input> successfully deleted")
+    expect_equal(res[1], "Recoding undertaken without problems")
 })
 
 #
 # Done
 #
 
-context("rmDS::smk::shutdown")
+context("recodeValuesDS1::smk::shutdown")
 
-context("rmDS::smk::done")
+context("recodeValuesDS1::smk::done")
