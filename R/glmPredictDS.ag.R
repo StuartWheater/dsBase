@@ -183,7 +183,11 @@ outlist<-stats::predict.glm(object=glmobj,newdata=newdf,type=output.type,
 }, error = function(e) { print(paste0('<1:[', e, ']>')); stop(paste0('<1:[', e, ']>'), call. = TRUE) })
 print('== Point #6')
 
+print(paste0('==[', outlist, ']=='))
+
 term.names<-colnames(outlist$fit)
+
+print('== Point #6.1')
 
 #ONLY VECTOR OF FITTED VALUES CREATED (LIST OF LENGTH 1)
 if(is.numeric(outlist))
