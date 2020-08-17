@@ -171,8 +171,10 @@ if(output.type=="terms" && se.fit==FALSE)
 se.fit<-TRUE
 }
 
+tryCatch({
 outlist<-stats::predict.glm(object=glmobj,newdata=newdf,type=output.type,
                             se.fit=se.fit,dispersion=dispersion,terms=terms.transmit,na.action=na.action)
+}, error = function(e) { print(paste0('<1:[', e, ']>')); stop(paste0('<1:[', e, ']>'), call. = TRUE) })
 
 term.names<-colnames(outlist$fit)
 
@@ -295,7 +297,7 @@ if(is.numeric(outlist))
 	}
 
     },
-    error = function(e) { print(paste0('-[', e, ']-'), stop('-[', e, ']-')) })
+    error = function(e) { print(paste0('<[', e, ']>')); stop(paste0('<[', e, ']>'), call. = TRUE) })
   }
  
 #AGGREGATE FUNCTION
