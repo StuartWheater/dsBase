@@ -58,6 +58,7 @@ nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
 #Check character string denoting <glmname.transmit> argument is not potentially disclosive because of length 
 
 tryCatch({
+print('== Point #1')
 string.safe<-TRUE
 
 if(!is.character(glmname.transmit))
@@ -103,6 +104,7 @@ if(!is.null(newdataname.transmit))
 	return(list(studysideMessage=studysideMessage))
 	}
 }
+print('== Point #2')
 
 #Check character string denoting <output.type> argument is valid 
 
@@ -127,6 +129,7 @@ if(!string.safe)
                      "'link','response', or 'terms'")
    return(list(studysideMessage=studysideMessage))
 }
+print('== Point #3')
 
 #Check character string denoting <na.action> argument is valid
 if(!is.character(na.action))
@@ -147,6 +150,7 @@ if(!string.safe)
                      "'na.fail','na.omit', 'na.exclude or 'na.pass'")
    return(list(studysideMessage=studysideMessage))
 }
+print('== Point #4')
 
 #Activate all arguments
 #glmobj<-eval(parse(text=glmname.transmit))
@@ -166,6 +170,8 @@ if(!is.null(newdataname.transmit))
 
 #prevent non-list output if output is complex (ie more than a single fit of class numeric)
 
+print('== Point #5')
+
 if(output.type=="terms" && se.fit==FALSE)
 {
 se.fit<-TRUE
@@ -175,12 +181,14 @@ tryCatch({
 outlist<-stats::predict.glm(object=glmobj,newdata=newdf,type=output.type,
                             se.fit=se.fit,dispersion=dispersion,terms=terms.transmit,na.action=na.action)
 }, error = function(e) { print(paste0('<1:[', e, ']>')); stop(paste0('<1:[', e, ']>'), call. = TRUE) })
+print('== Point #6')
 
 term.names<-colnames(outlist$fit)
 
 #ONLY VECTOR OF FITTED VALUES CREATED (LIST OF LENGTH 1)
 if(is.numeric(outlist))
   {
+print('== Point #7')
   predict.outlist<-list(fit=unlist(outlist))
   
   fit.ag.return.Ntotal<-length(predict.outlist$fit)  
@@ -199,6 +207,7 @@ if(is.numeric(outlist))
 
  }else{
 #MATRIX OF FITTED VALUES, SE etc CREATED (LIST OF LENGTH >1)
+print('== Point #8')
  predict.outlist<-outlist
  
   if(output.type!="terms")
@@ -227,6 +236,7 @@ if(is.numeric(outlist))
 				  residual.scale=predict.outlist$residual.scale)
 	return(list(safe.list=safe.list))
   }else{
+print('== Point #9')
  
 	#fit
 	numterms<-(dim(predict.outlist$fit)[2])
@@ -296,8 +306,9 @@ if(is.numeric(outlist))
 
 	}
 
+    print('== Point #10')
     },
-    error = function(e) { print(paste0('<[', e, ']>')); stop(paste0('<[', e, ']>'), call. = TRUE) })
+    error = function(e) { print(paste0('<2[', e, ']>')); stop(paste0('<2[', e, ']>'), call. = TRUE) })
   }
  
 #AGGREGATE FUNCTION
