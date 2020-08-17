@@ -57,6 +57,7 @@ nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
 
 #Check character string denoting <glmname.transmit> argument is not potentially disclosive because of length 
 
+tryCatch({
 string.safe<-TRUE
 
 if(!is.character(glmname.transmit))
@@ -293,10 +294,9 @@ if(is.numeric(outlist))
 
 	}
 
+    },
+    error = function(e) { print(paste0('-[', e, ']-'), stop('-[', e, ']-')) })
   }
  
 #AGGREGATE FUNCTION
 # glmPredictDS.ag
-
-
-
