@@ -79,7 +79,7 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
 
   sort.key.2.use<-sort.key
 
-  if(sort.method=="numeric")
+  if((sort.method=="numeric") || (sort.method=="default"))
   {
      sort.key.2.use<-as.numeric(sort.key)
   }
