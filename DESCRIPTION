@@ -11,7 +11,9 @@ Imports:
     RANN,
     nlme,
     stringr,
-    lme4
+    lme4,
+    magrittr,
+    dplyr
 AggregateMethods:
     asFactorDS1,
     asListDS,
@@ -142,7 +144,17 @@ AssignMethods:
     log=base::log,
     rep=base::rep,
     sum=base::sum,
-    unlist=base::unlist
+    unlist=base::unlist,
+    select=dplyr::select,
+    mutate=dplyr::mutate,
+    filter=dplyr::filter,
+    group_by=dplyr::group_by,
+    arrange=dplyr::arrange,
+    slice=dplyr::slice,
+    ungroup=dplyr::ungroup,
+    lag=dplyr::lag,
+    case_when=dplyr::case_when,
+    n=dplyr::n
 Options:
     datashield.privacyLevel=5,
     default.nfilter.glm=0.33,
