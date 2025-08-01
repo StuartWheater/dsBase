@@ -1,5 +1,5 @@
 #' @title cbindDS called by ds.cbind
-#' @description serverside assign function that takes a
+x#' @description serverside assign function that takes a
 #' sequence of vector, matrix or data-frame arguments
 #' and combines them by column to produce a data-frame.
 #' @details A sequence of vector, matrix or data-frame arguments
@@ -24,7 +24,7 @@
 cbindDS <- function(x.names.transmit=NULL, colnames.transmit=NULL){
   
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
   
   x.names.input <- x.names.transmit
   x.names.act1 <- unlist(strsplit(x.names.input, split=","))
