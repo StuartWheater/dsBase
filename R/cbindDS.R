@@ -1,5 +1,5 @@
 #' @title cbindDS called by ds.cbind
-x#' @description serverside assign function that takes a
+#' @description serverside assign function that takes a
 #' sequence of vector, matrix or data-frame arguments
 #' and combines them by column to produce a data-frame.
 #' @details A sequence of vector, matrix or data-frame arguments
