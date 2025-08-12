@@ -62,8 +62,11 @@ blackBoxRanksDS <- function(input.var.name=NULL, shared.seedval){ #START FUNC
   ########################################################
 
   # back-up current .Random.seed and revert on.exit
-  old_seed <- .Random.seed
-  on.exit(.Random.seed <- old_seed, add = TRUE)
+  if (exists(x = ".Random.seed", envir = globalenv())) {
+      assign(x = "old_seed", value = .Random.seed, envir = parent.frame());
+      on.exit({ assign(x = ".Random.seed", value = old_seed, envir = globalenv()); remove("old_seed", envir = parent.frame()) }, add = TRUE)
+  } else
+      on.exit(if (exists(x = ".Random.seed", envir = globalenv())) remove(".Random.seed", envir = globalenv()), add = TRUE)
 
 input.var <- eval(parse(text=input.var.name), envir = parent.frame())
 input.global.ranks<-input.var
