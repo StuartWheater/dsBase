@@ -10,7 +10,7 @@ qlsplineDS(x = x, q = q, na.rm = TRUE, marginal = FALSE, names = NULL)
 \item{x}{the name of the input numeric variable}
 
 \item{q}{numeric, a single scalar greater or equal to 2 for a number of equal-frequency
-intervals along x or a vector of numbers in (0; 1) specifying the quantiles explicitely.}
+intervals along x or a vector of numbers in (0; 1) specifying the quantiles explicitly.}
 
 \item{na.rm}{logical, whether NA should be removed when calculating quantiles, passed
 to na.rm of quantile. Default set to TRUE.}

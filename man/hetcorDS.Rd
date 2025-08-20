@@ -38,7 +38,7 @@ FALSE for two-step estimates.
 This function is based on the hetcor function from the R package \code{polycor}.
 }
 \details{
-Computes a heterogenous correlation matrix, consisting of Pearson product-moment
+Computes a heterogeneous correlation matrix, consisting of Pearson product-moment
 correlations between numeric variables, polyserial correlations between numeric and ordinal
 variables, and polychoric correlations between ordinal variables.
 }

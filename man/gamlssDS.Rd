@@ -2,7 +2,7 @@
 % Please edit documentation in R/gamlssDS.R
 \name{gamlssDS}
 \alias{gamlssDS}
-\title{gamlssDS an aggregate function called by ds.galmss}
+\title{gamlssDS an aggregate function called by ds.gamlss}
 \usage{
 gamlssDS(
   formula = formula,
