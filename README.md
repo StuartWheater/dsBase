@@ -32,7 +32,7 @@ For a full list of development branches, checkout https://github.com/datashield/
 
 ## About
 
-DataSHIELD is a software package which allows you to do non-disclosive federated analysis on sensitive data. Our website (https://www.datashield.org) has in depth descriptions of what it is, how it works and how to install it. A key point to highlight is that DataSHIELD has a client-server infrastructure, so the dsBase package (https://github.com/datashield/dsBase) needs to be used in conjuction with the dsBaseClient package (https://github.com/datashield/dsBaseClient) - trying to use one without the other makes no sense.
+DataSHIELD is a software package which allows you to do non-disclosive federated analysis on sensitive data. Our website (https://www.datashield.org) has in depth descriptions of what it is, how it works and how to install it. A key point to highlight is that DataSHIELD has a client-server infrastructure, so the dsBase package (https://github.com/datashield/dsBase) needs to be used in conjunction with the dsBaseClient package (https://github.com/datashield/dsBaseClient) - trying to use one without the other makes no sense.
 
 Detailed instructions on how to install DataSHIELD are at https://wiki.datashield.org/. The code here is organised as:
 
@@ -66,6 +66,6 @@ Detailed instructions on how to install DataSHIELD are at https://wiki.datashiel
   Duijts L, Escribà Montagut X, Garner H, Gonçalves G, González J, Haakma S, Hartlev M,
   Hasenauer J, Huth M, Hyde E, Jaddoe V, Marcon Y, Mayrhofer M, Molnar-Gabor F, Morgan A,
   Murtagh M, Nestor M, Nybo Andersen A, Parker S, Pinot de Moira A, Schwarz F,
-  Strandberg-Larsen K, Morris AvSwertz, Welten M, Wheater S, Burton P (2024). “DataSHIELD:
+  Strandberg-Larsen K, Swertz M, Welten M, Wheater S, Burton P (2024). “DataSHIELD:
   mitigating disclosure risk in a multi-site federated analysis platform.” _Bioinformatics
   Advances_, *5*(1), 1-21. <https://doi.org/10.1093/bioadv/vbaf046>.
