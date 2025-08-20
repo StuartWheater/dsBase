@@ -23,7 +23,7 @@ bibentry(
     person("Lisette", "Giepmans"),  
     person("Susan E", "Wallace"),  
     person("Isabelle", "Budin-Lj{\\o}sne"),  
-    person("Carsten", "{Oliver Schmidt}"),  
+    person("Carsten O.", "Schmidt"),  
     person("Paolo", "Boffetta"),  
     person("Mathieu", "Boniol"),  
     person("Maria", "Bota"),  
@@ -68,13 +68,13 @@ bibentry(
   title    = "{DataSHIELD – New Directions and Dimensions}",
   author   = c(
     person("Rebecca C.", "Wilson"), 
-    person("Oliver", "W. Butters"), 
+    person("Oliver W.", "Butters"), 
     person("Demetris", "Avraam"), 
     person("James", "Baker"), 
     person("Jonathan A.", "Tedds"), 
     person("Andrew", "Turner"), 
     person("Madeleine", "Murtagh"), 
-    person("Paul", "R. Burton")
+    person("Paul R.", "Burton")
   ),
   journal  = "Data Science Journal",
   year     = "2017",
@@ -118,10 +118,10 @@ bibentry(
     person("Angela", "{Pinot de Moira}"), 
     person("Florian", "Schwarz"), 
     person("Katrine", "Strandberg-Larsen"), 
-    person("Morris AvSwertz"), 
+    person("Morris A", "Swertz"), 
     person("Marieke", "Welten"), 
     person("Stuart", "Wheater"), 
-    person("Paul", "Burton")
+    person("Paul R", "Burton")
   ),
   journal  = "Bioinformatics Advances",
   year     = "2024",
