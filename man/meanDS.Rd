@@ -2,7 +2,7 @@
 % Please edit documentation in R/meanDS.R
 \name{meanDS}
 \alias{meanDS}
-\title{Computes statistical mean of a vectores}
+\title{Computes statistical mean of a vector}
 \usage{
 meanDS(xvect)
 }

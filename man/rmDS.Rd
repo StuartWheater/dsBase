@@ -8,7 +8,7 @@ rmDS(x.names.transmit)
 }
 \arguments{
 \item{x.names.transmit, }{the names of the objects to be deleted converted
-into transmissable form, a comma seperated list of character  string. The
+into transmissible form, a comma separated list of character string. The
 argument is specified via the <x.names> argument of ds.rm}
 }
 \value{
