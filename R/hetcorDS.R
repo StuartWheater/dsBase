@@ -1,7 +1,7 @@
 #' 
 #' @title Heterogeneous Correlation Matrix
 #' @description This function is based on the hetcor function from the R package \code{polycor}.
-#' @details Computes a heterogenous correlation matrix, consisting of Pearson product-moment
+#' @details Computes a heterogeneous correlation matrix, consisting of Pearson product-moment
 #' correlations between numeric variables, polyserial correlations between numeric and ordinal
 #' variables, and polychoric correlations between ordinal variables.
 #' @param data the name of a data frame consisting of factors, ordered factors, logical variables,

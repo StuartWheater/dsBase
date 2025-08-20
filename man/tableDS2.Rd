@@ -15,17 +15,17 @@ is nevertheless TRUE, the name for the serverside table object defaults
 to 'newObj'. Fully specified by <newobj> argument in \code{ds.table}.
 For more information see help for \code{ds.table}}
 
-\item{rvar.transmit}{is a character string (in inverted commas) specifiying the
+\item{rvar.transmit}{is a character string (in inverted commas) specifying the
 name of the variable defining the rows in all of the 2 dimensional
 tables that form the output. Fully specified by <rvar> argument in \code{ds.table}.
 For more information see help for \code{ds.table}}
 
-\item{cvar.transmit}{is a character string specifiying the
+\item{cvar.transmit}{is a character string specifying the
 name of the variable defining the columns in all of the 2 dimensional
 tables that form the output. Fully specified by <cvar> argument in \code{ds.table}.
 For more information see help for \code{ds.table}}
 
-\item{stvar.transmit}{is a character string specifiying the
+\item{stvar.transmit}{is a character string specifying the
 name of the variable that indexes the separate two dimensional
 tables in the output if the call specifies a 3 dimensional table.
 Fully specified by <stvar> argument in \code{ds.table}.

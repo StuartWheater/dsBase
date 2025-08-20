@@ -41,7 +41,7 @@
 #' help for <rep>" (see above). This parameter is usually fully defined by
 #' the argument <times> in the call to \code{ds.rep} that itself calls \code{repDS}.
 #' @param length.out.transmit This argument fixes the length of
-#' the output repetive sequence vector
+#' the output repetitive sequence vector
 #' For behaviour see help for \code{ds.rep} and "details from native R
 #' help for <rep>" (see above). This parameter is usually fully defined by
 #' the argument <length.out> in the call to \code{ds.rep} that itself calls \code{repDS}.

@@ -3,7 +3,7 @@
 #' class for all columns in data.frames.
 #' @details This assign function is based on the native R function \code{data.matrix}
 #' If applied to a data.frame, the native R function \code{as.matrix}
-#' coverts all columns into character class. In contrast, if applied to
+#' converts all columns into character class. In contrast, if applied to
 #' a data.frame the native R function \code{data.matrix} converts
 #' the data.frame to a matrix but maintains all data columns in their
 #' original class
