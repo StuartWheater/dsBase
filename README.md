@@ -23,8 +23,8 @@ And the development version from
 install.packages("remotes")
 remotes::install_github("datashield/dsBase", "<BRANCH>")
 
-# Install v6.4.0 with the following
-remotes::install_github("datashield/dsBase", "v6.4.0-dev")
+# Install v6.3.4 with the following
+remotes::install_github("datashield/dsBase", "6.3.4")
 ```
 
 For a full list of development branches, checkout https://github.com/datashield/dsBase/branches
