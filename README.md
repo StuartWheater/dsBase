@@ -47,7 +47,7 @@ Detailed instructions on how to install DataSHIELD are at https://wiki.datashiel
 
 [1] Burton P, Wilson R, Butters O, Ryser-Welch P, Westerberg A, Abarrategui L, Villegas-Diaz R,
   Avraam D, Marcon Y, Bishop T, Gaye A, Escribà Montagut X, Wheater S (2025). _dsBase: 'DataSHIELD' Server Side Base Functions_. R
-  package version 6.3.3. <https://doi.org/10.32614/CRAN.package.dsBase>.
+  package version 6.3.4. <https://doi.org/10.32614/CRAN.package.dsBase>.
 
 [2] Gaye A, Marcon Y, Isaeva J, LaFlamme P, Turner A, Jones E, Minion J, Boyd A, Newby C, Nuotio
   M, Wilson R, Butters O, Murtagh B, Demir I, Doiron D, Giepmans L, Wallace S, Budin-Ljøsne I,
