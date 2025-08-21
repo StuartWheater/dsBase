@@ -13,11 +13,9 @@ name: dsBase tests' suite
 
 on:
   push:
-    branches: [master]
   schedule:
     - cron: '0 0 * * 0'   # Weekly
     - cron: '0 1 * * *'   # Nightly
-  pull_request:
 
 jobs:
   dsBase_test_suite:
