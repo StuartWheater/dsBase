@@ -218,11 +218,9 @@ test_that("simple corTestDS, some, with na, pearson", {
       expect_equal(r, 1L, tolerance = 1E-8)
     }
     else { # other architectures
-      expect_true(is.infinite(res$`Correlation test`$statistic[[1]]))
-      # lower tolerance, expect success
-      expect_equal(r, 1L, tolerance = 1E-16)
-      # higher tolerance, expect success
-      expect_equal(r, 1L, tolerance = 1E-8)
+      expect_true(is.infinite(t_stat))
+      # the estimated value for r should NaN
+      expect_true(is.nan(r))
     }
 
     expect_equal(class(res$`Correlation test`$parameter), "integer")
