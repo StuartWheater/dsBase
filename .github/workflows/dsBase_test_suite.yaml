@@ -13,7 +13,6 @@ name: dsBase tests' suite
 
 on:
   push:
-    branches: [master, v6.3.4-dev]
   schedule:
     - cron: '0 0 * * 0'   # Weekly
     - cron: '0 1 * * *'   # Nightly
@@ -153,10 +152,9 @@ jobs:
         working-directory: dsBase
 
       - name: Commit results to testStatus
-        # if: github.repository == 'villegar/dsBase' && github.event_name != 'pull_request'
         run: |
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           cd testStatus
           git checkout master
           git pull

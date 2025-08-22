@@ -12,9 +12,6 @@
 # Set up
 #
 
-# Skip these tests on Apple M1 mac
-skip_on_os("mac", arch = "aarch64")
-
 context("corTestDS::smk::setup")
 
 #
@@ -201,7 +198,30 @@ test_that("simple corTestDS, some, with na, pearson", {
 
     expect_equal(class(res$`Correlation test`$statistic), "numeric")
     expect_length(res$`Correlation test`$statistic, 1)
-    expect_true(is.infinite(res$`Correlation test`$statistic[[1]]))
+    
+    # extract information from the results
+    t_stat <- res$`Correlation test`$statistic[[1]]
+    df <- res$`Number of pairwise complete cases`
+    # re-calculate the value for r (correlation)
+    ## t_stat <- sqrt(df) * r / sqrt(1 - r^2) # Equation 1
+    ## calculate intermediate coefficient, derived from Equation 1
+    A <- t_stat / sqrt(df)
+    ## use the intermediate value to estimate the correlation value, r
+    r <- sqrt(A^2 / (1 + A^2))
+    
+    # if testing on Apple M1: due to numeric precision
+    if (getElement(Sys.info(), "sysname") == "Darwin" &&
+        getElement(R.version, "arch") == "aarch64") {
+      # lower tolerance, expect failure, due to numeric precision
+      expect_error(expect_equal(r, 1L, tolerance = 1E-16))
+      # higher tolerance, expect success
+      expect_equal(r, 1L, tolerance = 1E-8)
+    }
+    else { # other architectures
+      expect_true(is.infinite(t_stat))
+      # the estimated value for r should NaN
+      expect_true(is.nan(r))
+    }
 
     expect_equal(class(res$`Correlation test`$parameter), "integer")
     expect_length(res$`Correlation test`$parameter, 1)
@@ -611,3 +631,4 @@ test_that("simple corTestDS, some, with na, spearman", {
 context("corTestDS::smk::shutdown")
 
 context("corTestDS::smk::done")
+
