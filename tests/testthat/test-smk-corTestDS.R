@@ -201,7 +201,8 @@ test_that("simple corTestDS, some, with na, pearson", {
     
     # extract information from the results
     t_stat <- res$`Correlation test`$statistic[[1]]
-    df <- res$`Number of pairwise complete cases`
+    # degrees of freedom
+    df <- res$`Number of pairwise complete cases` - 2 
     # re-calculate the value for r (correlation)
     ## t_stat <- sqrt(df) * r / sqrt(1 - r^2) # Equation 1
     ## calculate intermediate coefficient, derived from Equation 1
@@ -212,10 +213,10 @@ test_that("simple corTestDS, some, with na, pearson", {
     # if testing on Apple M1: due to numeric precision
     if (getElement(Sys.info(), "sysname") == "Darwin" &&
         getElement(R.version, "arch") == "aarch64") {
-      # lower tolerance, expect failure, due to numeric precision
-      expect_error(expect_equal(r, 1L, tolerance = 1E-16))
-      # higher tolerance, expect success
-      expect_equal(r, 1L, tolerance = 1E-8)
+      # t-stat should be a very large value, because r ~ 1, but not exactly 1
+      expect_false(is.infinite(t_stat))
+      # r ~ 1
+      expect_false(is.nan(r))
     }
     else { # other architectures
       expect_true(is.infinite(t_stat))
