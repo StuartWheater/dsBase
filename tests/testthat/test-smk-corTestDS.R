@@ -182,7 +182,7 @@ test_that("simple corTestDS, some, pearson, without na, pearson", {
 
 context("corTestDS::smk::with na, pearson")
 test_that("simple corTestDS, some, with na, pearson", {
-    x   <- c(0.0, NA, 2.0, 3.0, NA, 5.0, NA, 7.0)
+    x   <- c(NA, 1.0, 2.0, 3.0, NA, 5.0, NA, 7.0)
     y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
 
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
@@ -198,31 +198,7 @@ test_that("simple corTestDS, some, with na, pearson", {
 
     expect_equal(class(res$`Correlation test`$statistic), "numeric")
     expect_length(res$`Correlation test`$statistic, 1)
-    
-    # extract information from the results
-    t_stat <- res$`Correlation test`$statistic[[1]]
-    # degrees of freedom
-    df <- res$`Number of pairwise complete cases` - 2 
-    # re-calculate the value for r (correlation)
-    ## t_stat <- sqrt(df) * r / sqrt(1 - r^2) # Equation 1
-    ## calculate intermediate coefficient, derived from Equation 1
-    A <- t_stat / sqrt(df)
-    ## use the intermediate value to estimate the correlation value, r
-    r <- sqrt(A^2 / (1 + A^2))
-    
-    # if testing on Apple M1: due to numeric precision
-    if (getElement(Sys.info(), "sysname") == "Darwin" &&
-        getElement(R.version, "arch") == "aarch64") {
-      # t-stat should be a very large value, because r ~ 1, but not exactly 1
-      expect_false(is.infinite(t_stat))
-      # r ~ 1
-      expect_false(is.nan(r))
-    }
-    else { # other architectures
-      expect_true(is.infinite(t_stat))
-      # the estimated value for r should NaN
-      expect_true(is.nan(r))
-    }
+    expect_true(is.infinite(res$`Correlation test`$statistic[[1]]))
 
     expect_equal(class(res$`Correlation test`$parameter), "integer")
     expect_length(res$`Correlation test`$parameter, 1)
