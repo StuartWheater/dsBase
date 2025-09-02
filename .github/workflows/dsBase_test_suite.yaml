@@ -80,15 +80,9 @@ jobs:
             cran::kableExtra
             cran::rmarkdown
             cran::downlit
-            cran::fs
             cran::usethis
-            cran::cli
-            cran::rlang
             cran::ellipsis
-            cran::glue
-            cran::lifecycle
             cran::memoise
-            cran::vctrs
             cran::cachem
             cran::fastmap
             cran::miniUI
@@ -109,7 +103,6 @@ jobs:
             cran::data.table
             cran::deldir
             cran::DescTools
-            cran::dplyr
             cran::e1071
             cran::Exact
             cran::expm
@@ -147,17 +140,7 @@ jobs:
             cran::lifecycle
             cran::lme4
             cran::lmom
-            cran::interp
-            cran::isoband
-            cran::iterators
-            cran::jomo
-            cran::jsonlite
-            cran::labeling
-            cran::lifecycle
-            cran::lme4
-            cran::lmom
             cran::lubridate
-            cran::magrittr
             cran::Matrix
             cran::mice
             cran::mime
@@ -174,7 +157,6 @@ jobs:
             cran::plyr
             cran::polycor
             cran::proxy
-            cran::purrr
             cran::purrrlyr
             cran::R6
             cran::RANN
@@ -182,7 +164,6 @@ jobs:
             cran::RColorBrewer
             cran::Rcpp
             cran::Rdpack
-            cran::readr
             cran::readxl
             cran::reformulas
             cran::rematch
@@ -192,11 +173,10 @@ jobs:
             cran::rstudioapi
             cran::scales
             cran::shape
+            cran::shiny
             cran::stringi
-            cran::stringr
             cran::sys
             cran::tibble
-            cran::tidyr
             cran::tidyselect
             cran::timechange
             cran::tzdb
