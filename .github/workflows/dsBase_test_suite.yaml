@@ -90,6 +90,7 @@ jobs:
             cran::memoise
             cran::vctrs
             cran::cachem
+            cran::fastmap
           
       - name: Check man files up-to-date
         run: |
