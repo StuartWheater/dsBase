@@ -65,6 +65,7 @@ jobs:
           dependencies: 'FALSE'  # skip auto detection
           extra-packages: |
             any::rcmdcheck
+            bioc::BiocGenerics
             cran::devtools
             cran::git2r
             cran::RCurl
