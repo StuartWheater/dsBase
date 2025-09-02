@@ -156,7 +156,6 @@ jobs:
             cran::lifecycle
             cran::lme4
             cran::lmom
-            cran::local::.
             cran::lubridate
             cran::magrittr
             cran::Matrix
