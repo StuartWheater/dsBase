@@ -84,6 +84,8 @@ jobs:
             cran::usethis
             cran::cli
             cran::rlang
+            cran::ellipsis
+            cran::glue
           
       - name: Check man files up-to-date
         run: |
