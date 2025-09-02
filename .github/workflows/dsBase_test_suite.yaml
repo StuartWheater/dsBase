@@ -154,7 +154,7 @@ jobs:
             cran::ergm
             cran::evaluate
             cran::Exact
-            cran::ExactData
+            any::ExactData
             cran::expm
             cran::farver
             cran::ff
@@ -316,7 +316,6 @@ jobs:
             cran::QCA
             cran::qrng
             cran::quantreg
-            cran::R
             cran::R.rsp
             cran::R.utils
             cran::R6
@@ -330,7 +329,7 @@ jobs:
             cran::RColorBrewer
             cran::Rcpp
             cran::RcppEigen
-            cran::RDCOMClient
+            any::RDCOMClient
             cran::Rdpack
             cran::readr
             cran::readxl
