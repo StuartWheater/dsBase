@@ -79,7 +79,7 @@ jobs:
             cran::kableExtra
             cran::rmarkdown
             cran::downlit
-          needs: check
+          dependencies: NA
           
       - name: Check man files up-to-date
         run: |
