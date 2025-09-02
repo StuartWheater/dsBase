@@ -89,6 +89,7 @@ jobs:
             cran::lifecycle
             cran::memoise
             cran::vctrs
+            cran::cachem
           
       - name: Check man files up-to-date
         run: |
