@@ -82,6 +82,8 @@ jobs:
             cran::downlit
             cran::fs
             cran::usethis
+            cran::cli
+            cran::rlang
           
       - name: Check man files up-to-date
         run: |
