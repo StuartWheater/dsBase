@@ -62,7 +62,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          dependencies: NA  # skip auto detection
+          dependencies: false  # skip auto detection
           extra-packages: |
             any::rcmdcheck
             cran::devtools
