@@ -328,7 +328,6 @@ jobs:
             cran::RColorBrewer
             cran::Rcpp
             cran::RcppEigen
-            github::omegahat/RDCOMClient
             cran::Rdpack
             cran::readr
             cran::readxl
