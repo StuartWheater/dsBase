@@ -62,6 +62,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          dependencies: NA  # skip auto detection
           extra-packages: |
             any::rcmdcheck
             cran::devtools
@@ -79,7 +80,6 @@ jobs:
             cran::kableExtra
             cran::rmarkdown
             cran::downlit
-          dependencies: NA
           
       - name: Check man files up-to-date
         run: |
