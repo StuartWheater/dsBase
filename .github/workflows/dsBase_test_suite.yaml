@@ -154,7 +154,6 @@ jobs:
             cran::ergm
             cran::evaluate
             cran::Exact
-            any::ExactData
             cran::expm
             cran::farver
             cran::ff
@@ -329,7 +328,7 @@ jobs:
             cran::RColorBrewer
             cran::Rcpp
             cran::RcppEigen
-            any::RDCOMClient
+            github::omegahat/RDCOMClient
             cran::Rdpack
             cran::readr
             cran::readxl
