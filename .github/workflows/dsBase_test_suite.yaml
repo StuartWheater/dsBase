@@ -86,6 +86,7 @@ jobs:
             cran::rlang
             cran::ellipsis
             cran::glue
+            cran::lifecycle
           
       - name: Check man files up-to-date
         run: |
