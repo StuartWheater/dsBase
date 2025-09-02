@@ -87,6 +87,8 @@ jobs:
             cran::ellipsis
             cran::glue
             cran::lifecycle
+            cran::memoise
+            cran::vctrs
           
       - name: Check man files up-to-date
         run: |
