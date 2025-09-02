@@ -156,8 +156,11 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           cd testStatus
+          
+          # Reconfigure remote to use GitHub token for authentication
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.REPO_OWNER }}/testStatus.git
           git checkout master
-          git pull
+          git pull origin master
 
           mkdir -p logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
           mkdir -p docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
@@ -178,8 +181,8 @@ jobs:
           cp -r docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/* docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest
 
           git add .
-          git commit -m "Auto test for ${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }} @ ${{ env.WORKFLOW_ID }}"
-          git push
+          git commit -m "Auto test for ${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }} @ ${{ env.WORKFLOW_ID }}" || echo "No changes to commit"
+          git push origin master
           
         env:
           PROJECT_NAME: ${{ env.PROJECT_NAME }}
