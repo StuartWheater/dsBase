@@ -80,6 +80,8 @@ jobs:
             cran::kableExtra
             cran::rmarkdown
             cran::downlit
+            cran::fs
+            cran::usethis
           
       - name: Check man files up-to-date
         run: |
