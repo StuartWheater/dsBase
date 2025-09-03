@@ -61,8 +61,7 @@ jobs:
           use-public-rspm: true
           
       - name: Install dsBase
-        run: |
-          R CMD INSTALL dsBase
+        run: R CMD INSTALL ./dsBase
           
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
