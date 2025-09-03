@@ -66,6 +66,7 @@ jobs:
           extra-packages: |
             any::rcmdcheck
             bioc::BiocGenerics
+            cran::generics
             cran::devtools
             cran::git2r
             cran::RCurl
