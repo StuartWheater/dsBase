@@ -66,25 +66,24 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           # dependencies: 'FALSE'  # skip auto detection
-          with: 
-            extra-packages: | 
-              any::rcmdcheck 
-              cran::devtools 
-              cran::git2r 
-              cran::RCurl 
-              cran::readr 
-              cran::magrittr 
-              cran::xml2 
-              cran::purrr 
-              cran::dplyr 
-              cran::stringr 
-              cran::tidyr 
-              cran::quarto 
-              cran::knitr 
-              cran::kableExtra 
-              cran::rmarkdown 
-              cran::downlit 
-            needs: check
+          extra-packages: | 
+            any::rcmdcheck 
+            cran::devtools 
+            cran::git2r 
+            cran::RCurl 
+            cran::readr 
+            cran::magrittr 
+            cran::xml2 
+            cran::purrr 
+            cran::dplyr 
+            cran::stringr 
+            cran::tidyr 
+            cran::quarto 
+            cran::knitr 
+            cran::kableExtra 
+            cran::rmarkdown 
+            cran::downlit 
+          needs: check
           
       - name: Check man files up-to-date
         run: |
