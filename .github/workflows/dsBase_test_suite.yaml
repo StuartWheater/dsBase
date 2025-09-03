@@ -61,7 +61,9 @@ jobs:
           use-public-rspm: true
           
       - name: Install dsBase
-        run: R CMD INSTALL ./dsBase
+        run: |
+          Rscript -e 'install.packages(c("RANN", "stringr", "lme4", "dplyr", "reshape2", "polycor", "gamlss", "gamlss.dist", "mice", "childsds"), dependencies = TRUE)'
+          R CMD INSTALL ./dsBase
           
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
