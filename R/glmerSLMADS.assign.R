@@ -5,7 +5,7 @@
 #' The analytic work engine is the glmer function in R which sits in the lme4 package.
 #' glmerSLMADS.assign fits a generalized linear mixed effects model (glme) - e.g. a logistic or
 #' Poisson regression model including both fixed and random effects - on data
-#' from each single data source and saves the regression outcomes on the serveside.
+#' from each single data source and saves the regression outcomes on the serverside.
 #' @param formula see help for ds.glmerSLMA
 #' @param offset see help for ds.glmerSLMA
 #' @param weights see help for ds.glmerSLMA
