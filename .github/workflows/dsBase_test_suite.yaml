@@ -37,6 +37,7 @@ jobs:
       BRANCH_NAME: ${{ github.ref_name }}
       REPO_OWNER: ${{ github.repository_owner }}
       R_KEEP_PKG_SOURCE: yes
+      GITHUB_TOKEN: ${{ github.token || 'placeholder-token' }}
 
     steps:
       - name: Checkout dsBase
@@ -45,12 +46,14 @@ jobs:
           path: dsBase
 
       - name: Checkout testStatus
+        if: ${{ github.actor != 'nektos/act' }} # for local deployment only
         uses: actions/checkout@v4
         with:
           repository: ${{ env.REPO_OWNER }}/testStatus
-          token: ${{ secrets.GH_TOKEN }}
           ref: master
           path: testStatus
+          persist-credentials: false
+          token: ${{ env.GITHUB_TOKEN }}
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -156,44 +159,33 @@ jobs:
         run: |
           Rscript --verbose --vanilla ../testStatus/source/parse_test_report.R logs/
         working-directory: dsBase
-
-      - name: Commit results to testStatus
+        
+      - name: Render report
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
           cd testStatus
           
-          # Reconfigure remote to use GitHub token for authentication
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.REPO_OWNER }}/testStatus.git
-          git checkout master
-          git pull origin master
-
-          mkdir -p logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
-          mkdir -p docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
-          mkdir -p docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest/
-          # clear the latest directory 
-          rm -rf docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest/*
+          mkdir -p new/logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
+          mkdir -p new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
+          mkdir -p new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest/
           
           # Copy logs to new logs directory location
-          cp -rv ../dsBase/logs/* logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
-          cp -rv ../dsBase/logs/${{ env.WORKFLOW_ID }}.txt logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
+          cp -rv ../${{ env.PROJECT_NAME }}/logs/* new/logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
+          cp -rv ../${{ env.PROJECT_NAME }}/logs/${{ env.WORKFLOW_ID }}.txt new/logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
           
-          # Create symbolic links
-          ln -sf ${{ env.WORKFLOW_ID }}/ logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/.LATEST
-          # ln -sf docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/ docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/latest
-          
-          R -e 'input_dir <- file.path("../logs", Sys.getenv("PROJECT_NAME"), Sys.getenv("BRANCH_NAME"), Sys.getenv("WORKFLOW_ID")); quarto::quarto_render("source/test_report.qmd", execute_params = list(input_dir = input_dir))'
-          mv source/test_report.html docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/index.html
-          cp -r docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/* docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest
-
-          git add .
-          git commit -m "Auto test for ${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }} @ ${{ env.WORKFLOW_ID }}" || echo "No changes to commit"
-          git push origin master
+          R -e 'input_dir <- file.path("../new/logs", Sys.getenv("PROJECT_NAME"), Sys.getenv("BRANCH_NAME"), Sys.getenv("WORKFLOW_ID")); quarto::quarto_render("source/test_report.qmd", execute_params = list(input_dir = input_dir))'
+          mv source/test_report.html new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/index.html
+          cp -r new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/* new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest
           
         env:
           PROJECT_NAME: ${{ env.PROJECT_NAME }}
           BRANCH_NAME: ${{ env.BRANCH_NAME }}
           WORKFLOW_ID: ${{ env.WORKFLOW_ID }}
+        
+      - name: Upload test logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: dsbase-logs
+          path: testStatus/new
 
       - name: Dump environment info
         run: |
