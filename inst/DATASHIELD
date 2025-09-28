@@ -160,7 +160,10 @@ AssignMethods:
     acos=base::acos,
     atan=base::atan,
     sum=base::sum,
-    unlist=base::unlist
+    unlist=base::unlist,
+    floor=base::floor,
+    ceiling=base::ceiling,
+    cumsum=base::cumsum
 Options:
     datashield.privacyLevel=5,
     default.datashield.privacyControlLevel="banana",
