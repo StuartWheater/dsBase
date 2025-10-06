@@ -4,7 +4,7 @@
 #' @details The function returns the metadata, obtained from attributes function.
 #' @param x a string character, containing the name  of the specified variable
 #' @return a list containing the metadata. The elements of the list will depend
-#' on the meatadata available.
+#' on the metadata available.
 #' @author Stuart Wheater, for DataSHIELD Development Team
 #' @export
 #'

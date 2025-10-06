@@ -7,3 +7,7 @@
 ^data$
 ^docs$
 ^pkgdown$
+^\.circleci$
+^\.circleci/config\.yml$
+^\.github$
+^cran-comments\.md$

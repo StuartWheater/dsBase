@@ -11,7 +11,7 @@
 #' plot of non-disclosive graphs (e.g. scatter plots, heatmap plots, contour plots, etc).    
 #' @param x the name of a numeric vector, the x-variable.
 #' @param y the name of a numeric vector, the y-variable.
-#' @param k the number of the nearest neghbours for which their centroid is calculated if the 
+#' @param k the number of the nearest neighbours for which their centroid is calculated if the 
 #' \code{method.indicator} is equal to 1 (i.e. deterministic method).
 #' @param noise the percentage of the initial variance that is used as the variance of the embedded
 #' noise if the \code{method.indicator} is equal to 2 (i.e. probabilistic method).
@@ -37,6 +37,13 @@ heatmapPlotDS <- function(x, y, k, noise, method.indicator){
   #nfilter.levels.density <- as.numeric(thr$nfilter.levels.density) #
   #nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)         #
   ###################################################################
+  
+  # back-up current .Random.seed and revert on.exit
+  if (exists(x = ".Random.seed", envir = globalenv())) {
+      assign(x = ".old_seed", value = .Random.seed, envir = parent.frame());
+      on.exit({ assign(x = ".Random.seed", value = parent.frame()$.old_seed, envir = globalenv()); remove(".old_seed", envir = parent.frame()) }, add = TRUE)
+  } else
+      on.exit(if (exists(x = ".Random.seed", envir = globalenv())) remove(".Random.seed", envir = globalenv()), add = TRUE)
   
   # Cbind the columns of the two variables and remove any rows that include NAs
   data.table <- cbind.data.frame(x, y)

@@ -61,6 +61,12 @@ blackBoxRanksDS <- function(input.var.name=NULL, shared.seedval){ #START FUNC
   #nfilter.levels <- as.numeric(thr$nfilter.levels)       
   ########################################################
 
+  # back-up current .Random.seed and revert on.exit
+  if (exists(x = ".Random.seed", envir = globalenv())) {
+      assign(x = ".old_seed", value = .Random.seed, envir = parent.frame());
+      on.exit({ assign(x = ".Random.seed", value = parent.frame()$.old_seed, envir = globalenv()); remove(".old_seed", envir = parent.frame()) }, add = TRUE)
+  } else
+      on.exit(if (exists(x = ".Random.seed", envir = globalenv())) remove(".Random.seed", envir = globalenv()), add = TRUE)
 
 input.var <- eval(parse(text=input.var.name), envir = parent.frame())
 input.global.ranks<-input.var
@@ -189,7 +195,7 @@ colnames(rank.intermediate.value.matrix)<-c("input.global.ranks.orig","input.var
                                             1:6,"ID.seq.real.orig")
 
 
-cat("\nRANKS IN ALL COLUMNS ABOVE SHOULD BE THE SAME\n")
+message("\nRANKS IN ALL COLUMNS ABOVE SHOULD BE THE SAME\n")
 
 control.vector
 control.value
@@ -255,7 +261,7 @@ if(sum(round(rank(blackbox.ranks.df[,5])-rank(blackbox.ranks.df[,8]),2)==0)!=num
             of memory")
   stop(error.message, call. = FALSE)
 }else{
-  cat("\nPROCESSING SUCCESSFUL, ALL RANKS AGREE FOR ALL TRANSFORMATIONS\n\n")
+  message("\nPROCESSING SUCCESSFUL, ALL RANKS AGREE FOR ALL TRANSFORMATIONS\n\n")
 }
 
 

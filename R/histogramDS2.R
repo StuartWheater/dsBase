@@ -14,7 +14,7 @@
 #' control that is used for the generation of the histogram. If the value is equal to 1 then the
 #' 'smallCellsRule' is used. If the value is equal to 2 then the 'deterministic' method is used.
 #' If the value is set to 3 then the 'probabilistic' method is used.
-#' @param k the number of the nearest neghbours for which their centroid is calculated if the 
+#' @param k the number of the nearest neighbours for which their centroid is calculated if the 
 #' \code{method.indicator} is equal to 2 (i.e. deterministic method).
 #' @param noise the percentage of the initial variance that is used as the variance of the embedded
 #' noise if the \code{method.indicator} is equal to 3 (i.e. probabilistic method).
@@ -37,6 +37,13 @@ histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, nois
   nfilter.levels.density <- as.numeric(thr$nfilter.levels.density) #
   # nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)       #
   ##################################################################
+  
+  # back-up current .Random.seed and revert on.exit
+  if (exists(x = ".Random.seed", envir = globalenv())) {
+      assign(x = ".old_seed", value = .Random.seed, envir = parent.frame());
+      on.exit({ assign(x = ".Random.seed", value = parent.frame()$.old_seed, envir = globalenv()); remove(".old_seed", envir = parent.frame()) }, add = TRUE)
+  } else
+      on.exit(if (exists(x = ".Random.seed", envir = globalenv())) remove(".Random.seed", envir = globalenv()), add = TRUE)
   
   if (method.indicator==1){
 

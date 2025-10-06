@@ -11,7 +11,7 @@ metadataDS(x)
 }
 \value{
 a list containing the metadata. The elements of the list will depend
-on the meatadata available.
+on the metadata available.
 }
 \description{
 This function returns metadata, if any, about specified variable.
