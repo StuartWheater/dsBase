@@ -23,7 +23,7 @@
 #' @param obj The object whose class should be checked.
 #' @param obj_name A character string with the name of the object (used in error messages).
 #' @param permitted_classes A character vector of allowed class names.
-#'
+#' @importFrom glue glue glue_collapse
 #' @return Invisibly returns `TRUE` if the class check passes; otherwise throws an error.
 #' @noRd
 .check_class <- function(obj, obj_name, permitted_classes) {
@@ -31,7 +31,7 @@
   
   if (!any(permitted_classes %in% typ)) {
     msg <- glue(
-      "The server-side object must be of type {paste(permitted_classes, collapse = ' or ')}. ",
+      "The server-side object must be of type {glue_collapse(permitted_classes, sep = ' or ')}. ",
       "'{obj_name}' is type {typ}."
     )
     
