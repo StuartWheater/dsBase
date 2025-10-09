@@ -75,7 +75,8 @@ Imports:
     glue
 Suggests:
     spelling,
-    testthat
+    testthat (>= 3.0.0)
 RoxygenNote: 7.3.3
 Encoding: UTF-8
 Language: en-GB
+Config/testthat/edition: 3
