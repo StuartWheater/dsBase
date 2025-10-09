@@ -6,7 +6,7 @@
 #' @param x A character string naming the object to be retrieved.
 #' @return The evaluated R object referred to by `x`.
 #' @noRd
-.load_serverside_object <- function(x) {
+.loadServersideObject <- function(x) {
   tryCatch(
     eval(parse(text = x), envir = parent.frame()), 
     error = function(e) {
@@ -26,7 +26,7 @@
 #' @importFrom glue glue glue_collapse
 #' @return Invisibly returns `TRUE` if the class check passes; otherwise throws an error.
 #' @noRd
-.check_class <- function(obj, obj_name, permitted_classes) {
+.checkClass <- function(obj, obj_name, permitted_classes) {
   typ <- class(obj)
   
   if (!any(permitted_classes %in% typ)) {

@@ -8,8 +8,8 @@
 #' @export
 #'
 colnamesDS <- function(x){
-  x.val <- .load_serverside_object(x)
-  .check_class(obj = x.val, obj_name = x, permitted_classes = c("data.frame", "matrix"))
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("data.frame", "matrix"))
   out <- colnames(x.val)
   return(out)
 }
