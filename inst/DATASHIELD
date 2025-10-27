@@ -37,6 +37,7 @@ AggregateMethods:
     lmerSLMADS2,
     lsDS,
     matrixDetDS1,
+    mdPatternDS,
     meanDS,
     meanSdGpDS,
     messageDS,
