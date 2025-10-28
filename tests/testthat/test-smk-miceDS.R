@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("miceDS::smk::setup")
+# context("miceDS::smk::setup")
 
 #
 # Tests
 #
 
-context("miceDS::smk")
+# context("miceDS::smk")
 test_that("miceDS", {
   
     load(file = 'data_files/CNSIM/CNSIM1.rda')
@@ -53,6 +54,6 @@ test_that("miceDS", {
 # Done
 #
 
-context("miceDS::smk::shutdown")
+# context("miceDS::smk::shutdown")
 
-context("miceDS::smk::done")
+# context("miceDS::smk::done")
