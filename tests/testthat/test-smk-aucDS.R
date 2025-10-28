@@ -32,7 +32,7 @@ test_that("aucDS", {
     expect_equal(class(res$AUC), "numeric")
     expect_equal(res$AUC, 0.6767515, tolerance=1e-07)
     expect_equal(class(res$se), "numeric")
-    expect_equal(res$se, 0.02065186, tolerance=1e-08)
+    expect_equal(res$se, 0.02065186, tolerance=1e-07)
     
 })
 

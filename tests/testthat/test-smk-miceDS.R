@@ -25,15 +25,19 @@ test_that("miceDS", {
     load(file = 'data_files/CNSIM/CNSIM1.rda')
     D <- study1
 
-    res <- miceDS(data='D', m=1, maxit=5, method=NULL, post=NULL, predictorMatrix=NULL, seed=NA,
-                  ncol.pred.mat=NULL, newobj_mids='mids_object', newobj_df='impSet')
+    expect_warning(res <- miceDS(data='D', m=1, maxit=5, method=NULL, post=NULL, predictorMatrix=NULL, seed=NA,
+                  ncol.pred.mat=NULL, newobj_mids='mids_object', newobj_df='impSet'), "Number of logged events: 1")
 
-    expect_equal(class(res), "list")
+    expect_true(all(class(res) %in% c("list")))
+    print(class(res))
     expect_length(res, 3)
-    expect_true("character" %in% class(res$method))
+    expect_true(all(class(res$method) %in% c("character")))
+    print(class(res$method))
     expect_equal(as.character(res$method), c("pmm","pmm","pmm","pmm","pmm","","","","","","polyreg"))
-    expect_true("matrix" %in% class(res$predictorMatrix))
-    expect_true("array" %in% class(res$predictorMatrix))
+    expect_true(all(class(res$predictorMatrix) %in% c("matrix array")))
+    print(class(res$predictorMatrix))
+    expect_true(all(class(res$predictorMatrix) %in% c("matrix array")))
+    print(class(res$predictorMatrix))
     expect_equal(as.numeric(res$predictorMatrix[,1]), c(0,1,1,1,1,1,1,1,1,1,1))
     expect_equal(as.numeric(res$predictorMatrix[,2]), c(1,0,1,1,1,1,1,1,1,1,1))
     expect_equal(as.numeric(res$predictorMatrix[,3]), c(1,1,0,1,1,1,1,1,1,1,1))

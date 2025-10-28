@@ -29,7 +29,7 @@ test_that("simple messageDS", {
 
     expect_equal(class(res), "character")
     expect_length(res, 1)
-    expect_equal(res, "Error: the object <message.object.name> does not exist in this datasource", fixed = TRUE)
+    expect_equal(res, "Error: the object <message.object.name> does not exist in this datasource")
 })
 
 test_that("simple messageDS", {
@@ -39,7 +39,7 @@ test_that("simple messageDS", {
 
     expect_equal(class(res), "character")
     expect_length(res, 1)
-    expect_equal(res, "ALL OK: there are no studysideMessage(s) on this datasource", fixed = TRUE)
+    expect_equal(res, "ALL OK: there are no studysideMessage(s) on this datasource")
 })
 
 test_that("simple messageDS", {
@@ -49,7 +49,7 @@ test_that("simple messageDS", {
 
     expect_equal(class(res), "character")
     expect_length(res, 1)
-    expect_equal(res, "Outcome object is a list without names. So a studysideMessage may be hidden. Please check output is OK", fixed = TRUE)
+    expect_equal(res, "Outcome object is a list without names. So a studysideMessage may be hidden. Please check output is OK")
 })
 
 
@@ -60,7 +60,7 @@ test_that("simple messageDS", {
 
     expect_equal(class(res), "character")
     expect_length(res, 1)
-    expect_equal(res, "Outcome object is a list without names. So a studysideMessage may be hidden. Please check output is OK", fixed = TRUE)
+    expect_equal(res, "Outcome object is a list without names. So a studysideMessage may be hidden. Please check output is OK")
 })
 
 test_that("simple messageDS", {
@@ -70,7 +70,7 @@ test_that("simple messageDS", {
 
     expect_equal(class(res), "character")
     expect_length(res, 1)
-    expect_equal(res, "ALL OK: there are no studysideMessage(s) on this datasource", fixed = TRUE)
+    expect_equal(res, "ALL OK: there are no studysideMessage(s) on this datasource")
 })
 
 test_that("simple messageDS", {
@@ -80,7 +80,7 @@ test_that("simple messageDS", {
 
     expect_equal(class(res), "character")
     expect_length(res, 1)
-    expect_equal(res, "NOT ALL OK: there are studysideMessage(s) on this datasource", fixed = TRUE)
+    expect_equal(res, "NOT ALL OK: there are studysideMessage(s) on this datasource")
 })
 
 #

@@ -62,7 +62,7 @@ test_that("simple skewnessDS1, method 3", {
     expect_length(res, 3)
     expect_equal(class(res), "list")
     expect_equal(class(res$Skewness), "numeric")
-    expect_equal(res$Skewness, 0.371380, tolerance = 1e-6)
+    expect_equal(res$Skewness, 0.3713805, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
     expect_equal(class(res$ValidityMessage), "character")

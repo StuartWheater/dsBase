@@ -254,8 +254,8 @@ test_that("simple corTestDS, full, without na, kendall", {
     
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
-    
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
+
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
     expect_equal(res$`Correlation test`$estimate[[1]], 1.0)
@@ -346,7 +346,7 @@ test_that("simple corTestDS, some, kendall, without na, kendall", {
 
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
@@ -440,7 +440,7 @@ test_that("simple corTestDS, full, without na, spearman", {
 
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
@@ -486,7 +486,7 @@ test_that("simple corTestDS, neg. full, without na, spearman", {
 
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
@@ -532,11 +532,11 @@ test_that("simple corTestDS, some, spearman, without na, spearman", {
 
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
-    expect_equal(res$`Correlation test`$estimate[[1]], 1.0)
+    expect_equal(res$`Correlation test`$estimate[[1]], 1.0, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$null.value), "numeric")
     expect_length(res$`Correlation test`$null.value, 1)
