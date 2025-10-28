@@ -43,6 +43,21 @@ test_that("simple colnamesDS, data.matrix", {
     expect_true("v2" %in% res)
 })
 
+test_that("colnamesDS throws error when object does not exist", {
+  expect_error(
+    colnamesDS("nonexistent_object"),
+    regexp = "does not exist"
+  )
+})
+
+test_that("colnamesDS throws error when object is not data.frame or matrix", {
+  bad_input <- list(a = 1:3, b = 4:6)
+  expect_error(
+    colnamesDS("bad_input"),
+    regexp = "must be of type data.frame or matrix"
+  )
+})
+
 #
 # Done
 #
