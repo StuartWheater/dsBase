@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("messageDS::smk::setup")
+# context("messageDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("messageDS::smk")
+# context("messageDS::smk")
 test_that("simple messageDS", {
     expect_warning(base::rm("object"), "object 'object' not found", fixed = TRUE)
 
@@ -86,6 +87,6 @@ test_that("simple messageDS", {
 # Done
 #
 
-context("messageDS::smk::shutdown")
+# context("messageDS::smk::shutdown")
 
-context("messageDS::smk::done")
+# context("messageDS::smk::done")
