@@ -13,7 +13,7 @@
 # Set up
 #
 
-context("utils::smk::setup")
+# context("utils::smk::setup")
 test_that(".loadServersideObject() returns existing object", {
   test_df <- data.frame(a = 1:3)
   result <- .loadServersideObject("test_df")
@@ -42,5 +42,5 @@ test_that(".checkClass() throws informative error for wrong class", {
   )
 })
 
-context("utils::smk::shutdown")
-context("utils::smk::done")
+# context("utils::smk::shutdown")
+# context("utils::smk::done")
