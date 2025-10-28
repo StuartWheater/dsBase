@@ -11,4 +11,4 @@
 ^\.circleci/config\.yml$
 ^\.github$
 ^cran-comments\.md$
-^pull\_request\_template‎$
+^pull_request_template‎$
