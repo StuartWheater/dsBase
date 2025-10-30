@@ -12,17 +12,20 @@
 #
 # Set up
 #
+.dsFunctionWrapper <- function(x) {
+  .loadServersideObject(x)
+}
 
 # context("utils::smk::setup")
 test_that(".loadServersideObject() returns existing object", {
   test_df <- data.frame(a = 1:3)
-  result <- .loadServersideObject("test_df")
+  result <- .dsFunctionWrapper("test_df")
   expect_identical(result, test_df)
 })
 
 test_that(".loadServersideObject() throws error for missing object", {
   expect_error(
-    .loadServersideObject("nonexistent_obj"),
+    .dsFunctionWrapper("test_df"),
     regexp = "does not exist"
   )
 })
