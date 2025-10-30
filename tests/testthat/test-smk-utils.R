@@ -12,6 +12,10 @@
 #
 # Set up
 #
+
+## When .loadServersideObject is called, the actual data exists two levels below the function,
+## i.e. data in global env --> ds function --> .loadServersideObject. We recreate this in
+## the test environment with a wrapper function.
 .dsFunctionWrapper <- function(x) {
   .loadServersideObject(x)
 }
