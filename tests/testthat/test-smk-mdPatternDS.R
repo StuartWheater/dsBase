@@ -58,7 +58,7 @@ test_that("mdPatternDS: sample complete data.frame", {
 
 context("mdPatternDS::smk::sample incomplete data.frame")
 test_that("mdPatternDS: sample incomplete data.frame", {
-    x_val <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    x_val <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, 4.0, 5.0, 6.0), v2 = c(6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0))
     x     <- "x_val"
 
     res <- mdPatternDS(x)
@@ -74,7 +74,7 @@ test_that("mdPatternDS: sample incomplete data.frame", {
     expect_equal(colnames(res$pattern)[2], "v1")
     expect_equal(colnames(res$pattern)[3], "")
     expect_length(rownames(res$pattern), 3)
-    expect_equal(rownames(res$pattern)[1], "4")
+    expect_equal(rownames(res$pattern)[1], "6")
     expect_equal(rownames(res$pattern)[2], "1")
     expect_equal(rownames(res$pattern)[3], "")
 
