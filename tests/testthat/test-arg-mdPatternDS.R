@@ -14,6 +14,8 @@
 
 context("mdPatternDS::arg::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
