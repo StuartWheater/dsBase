@@ -14,12 +14,14 @@
 
 context("mdPatternDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
 
-context("mdPatternDS::smk::sample complete data.frame")
-test_that("mdPatternDS: sample complete data.frame", {
+context("mdPatternDS::smk::sample 1 complete data.frame")
+test_that("mdPatternDS: sample 1 complete data.frame", {
     x_val <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
     x     <- "x_val"
 
@@ -54,9 +56,10 @@ test_that("mdPatternDS: sample complete data.frame", {
     expect_equal(res$message, "Valid: all pattern counts meet disclosure requirements")
 })
 
-context("mdPatternDS::smk::sample incomplete data.frame")
-test_that("mdPatternDS: sample incomplete data.frame", {
-    x_val <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+context("mdPatternDS::smk::sample 2 complete data.frame")
+test_that("mdPatternDS: sample 2 complete data.frame", {
+    x_val <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0), v2 = c(9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0))
     x     <- "x_val"
 
     res <- mdPatternDS(x)
@@ -68,23 +71,20 @@ test_that("mdPatternDS: sample incomplete data.frame", {
     expect_true(all(class(res$pattern) %in% c("matrix", "array")))
 
     expect_length(colnames(res$pattern), 3)
-    expect_equal(colnames(res$pattern)[1], "v2")
-    expect_equal(colnames(res$pattern)[2], "v1")
+    expect_equal(colnames(res$pattern)[1], "v1")
+    expect_equal(colnames(res$pattern)[2], "v2")
     expect_equal(colnames(res$pattern)[3], "")
-    expect_length(rownames(res$pattern), 3)
-    expect_equal(rownames(res$pattern)[1], "4")
-    expect_equal(rownames(res$pattern)[2], "1")
-    expect_equal(rownames(res$pattern)[3], "")
+    expect_length(rownames(res$pattern), 2)
+    expect_equal(rownames(res$pattern)[1], "10")
+    expect_equal(rownames(res$pattern)[2], "")
+    expect_true(is.na(rownames(res$pattern)[3]))
 
     expect_equal(res$pattern[1, 1], 1)
     expect_equal(res$pattern[1, 2], 1)
     expect_equal(res$pattern[1, 3], 0)
-    expect_equal(res$pattern[2, 1], 1)
+    expect_equal(res$pattern[2, 1], 0)
     expect_equal(res$pattern[2, 2], 0)
-    expect_equal(res$pattern[2, 3], 1)
-    expect_equal(res$pattern[3, 1], 0)
-    expect_equal(res$pattern[3, 2], 1)
-    expect_equal(res$pattern[3, 3], 1)
+    expect_equal(res$pattern[2, 3], 0)
 	
     expect_length(class(res$valid), 1)
     expect_true(all(class(res$valid) %in% c("logical")))
