@@ -182,7 +182,7 @@ test_that("simple corTestDS, some, pearson, without na, pearson", {
 
 context("corTestDS::smk::with na, pearson")
 test_that("simple corTestDS, some, with na, pearson", {
-    x   <- c(0.0, NA, 2.0, 3.0, NA, 5.0, NA, 7.0)
+    x   <- c(NA, 1.0, 2.0, 3.0, NA, 5.0, NA, 7.0)
     y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
 
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
@@ -608,3 +608,4 @@ test_that("simple corTestDS, some, with na, spearman", {
 context("corTestDS::smk::shutdown")
 
 context("corTestDS::smk::done")
+
