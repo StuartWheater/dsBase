@@ -188,6 +188,7 @@ jobs:
       # testthat::testpackage uses a MultiReporter, comprised of a ProgressReporter and JunitReporter
       # R output and messages are redirected by sink() to test_console_output.txt
       # junit reporter output is to test_results.xml
+      export PERF_PROFILE="azure-pipeline"
       sudo R -q -e '
         library(covr);
         write.csv(
