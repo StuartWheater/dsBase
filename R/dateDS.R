@@ -29,7 +29,6 @@
 dateDS <- function(x=NULL, type=NULL,
                    newobj=NULL, unit=NULL, add.column=NULL) { 
   
-  library(lubridate)
   add.column <- as.logical(add.column)
   
   # If argument not in c("extractdate", "makedate", "timebetween") throw an error
@@ -119,9 +118,9 @@ dateDS <- function(x=NULL, type=NULL,
     
     # Extract the requested component
     result <- switch(unit,
-                     days   = day(date_input),
-                     months = month(date_input),
-                     years  = year(date_input),
+                     days   = lubridate::day(date_input),
+                     months = lubridate::month(date_input),
+                     years  = lubridate::year(date_input),
                      stop("Invalid unit. Must be one of: days, months, years"))
   }
   
@@ -141,7 +140,7 @@ dateDS <- function(x=NULL, type=NULL,
     }
     
     if (any(year_vec < 1000 | year_vec > 3000, na.rm = TRUE)) {
-      stop("The 'year' input in 'makedate' must contain plausible 4-digit years (1000–3000).
+      stop("The 'year' input in 'makedate' must contain plausible 4-digit years (1000-3000).
            Check that year, month, and day are given in the correct order (year, month, day).", call. = FALSE)
     }
     if (any(month_vec < 1 | month_vec > 12, na.rm = TRUE)) {
@@ -154,9 +153,9 @@ dateDS <- function(x=NULL, type=NULL,
     }
     
     
-    result <- make_date(year  = year_vec,
-                          month = month_vec,
-                          day   = day_vec)
+    result <- lubridate::make_date(year  = year_vec,
+                                   month = month_vec,
+                                   day   = day_vec)
   }
   
   
@@ -166,12 +165,12 @@ dateDS <- function(x=NULL, type=NULL,
     
     # inputs[[1]] = start date, inputs[[2]] = end date
     units <- list(
-      years  = years(1),
-      months = months(1),
-      days   = days(1)
+      years  = lubridate::years(1),
+      months = lubridate::month(1),
+      days   = lubridate::days(1)
     )
     
-    result <- interval(inputs[[1]], inputs[[2]]) %/% units[[unit]]
+    result <- lubridate::interval(inputs[[1]], inputs[[2]]) %/% units[[unit]]
   }
   
   # Save result based on add.column

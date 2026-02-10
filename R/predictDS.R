@@ -71,15 +71,15 @@ predictDS <- function(newdataname, traindataname, type = c("response", "link"),
   
   # SPECIAL CASE HANDLING: y ~ 1, intercept only ######################
   # A numeric vector will be created wit the mean, with the same length as the row number in newdataname 
-  special_case <- length(attr(terms(formula(model_formula)), "term.labels")) == 0
+  special_case <- length(attr(stats::terms(stats::formula(model_formula)), "term.labels")) == 0
   
   if(special_case){
     intercept <- coefficients
     
     # If the input is just a numeric vector, get the length
-    if(class(newdf)=="numeric"){
+    if(all(c("numeric") %in% class(newdf))){
       predictions.f <- rep(intercept, length(newdf))
-    } else if(class(newdf)=="data.frame"){
+    } else if(all(c("data.frame") %in% class(newdf))){
       predictions.f <- rep(intercept, nrow(newdf)) # Otherwise use the number of rows
     } else {
       stop("Invalid input: The object called 'newdataname' must be either a numeric vector or a data.frame.",, call. = FALSE)
@@ -95,7 +95,7 @@ predictDS <- function(newdataname, traindataname, type = c("response", "link"),
       predictions.f <- exp(predictions.f)     
     } else if (family_name == "binomial") {
       # logit
-      predictions.f <- plogis(predictions.f)   
+      predictions.f <- stats::plogis(predictions.f)
     } else {
       stop("Unsupported family for intercept-only prediction: Family must be either Gaussian, Poisson, or Binomial.", call. = FALSE)
     }
@@ -121,18 +121,17 @@ predictDS <- function(newdataname, traindataname, type = c("response", "link"),
   na.action.fun <- match.fun(na.action)
   
   # Use a dummy glm object with the correct formula and family
-  dummy_fit <- glm(model_formula,
-                   data = traindata,
-                   family = family_obj,
-                   control = glm.control(maxit = 1))
+  dummy_fit <- stats::glm(model_formula,
+                          data = traindata,
+                          family = family_obj,
+                           control = stats::glm.control(maxit = 1))
   
   # Change its coefficients with the correct ones
   names(coefficients) <- names(dummy_fit$coefficients)
   dummy_fit$coefficients <- coefficients
   
   # New predictions
-  prediction <- predict(dummy_fit, newdata = newdf, type = type, na.action = na.action.fun)
+  prediction <- stats::predict(dummy_fit, newdata = newdf, type = type, na.action = na.action.fun)
   
   return(prediction)
 }
- 

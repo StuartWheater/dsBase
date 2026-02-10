@@ -59,7 +59,9 @@ Imports:
     childsds, 
     purrr, 
     tibble,
-    tidyselect
+    tidyselect,
+    stats,
+    lubridate
 Suggests:
     testthat
 RoxygenNote: 7.3.3
