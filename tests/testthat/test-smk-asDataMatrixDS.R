@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2026 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -29,25 +30,53 @@ test_that("simple asDataMatrixDS", {
     {
         expect_length(res.class, 1)
         expect_true("matrix" %in% res.class)
+
+        expect_length(res, 10)
+        expect_equal(res[1], 0)
+        expect_equal(res[2], 1)
+        expect_equal(res[3], 2)
+        expect_equal(res[4], 3)
+        expect_equal(res[5], 4)
+        expect_equal(res[6], 4)
+        expect_equal(res[7], 3)
+        expect_equal(res[8], 2)
+        expect_equal(res[9], 1)
+        expect_equal(res[10], 0)
+    }
+    else if (base::getRversion() < '4.0.1')
+    {
+        expect_length(res.class, 2)
+        expect_true(all(c("matrix", "array") %in% res.class))
+
+        expect_length(res, 10)
+        expect_equal(res[1], 0)
+        expect_equal(res[2], 1)
+        expect_equal(res[3], 2)
+        expect_equal(res[4], 3)
+        expect_equal(res[5], 4)
+        expect_equal(res[6], 4)
+        expect_equal(res[7], 3)
+        expect_equal(res[8], 2)
+        expect_equal(res[9], 1)
+        expect_equal(res[10], 0)
     }
     else
     {
-        expect_length(res.class, 2)
-        expect_true("matrix" %in% res.class)
-        expect_true("array" %in% res.class)
-    }
+        expect_length(res.class, 1)
+        expect_true(all("data.frame" %in% res.class))
 
-    expect_length(res, 10)
-    expect_equal(res[1], 0)
-    expect_equal(res[2], 1)
-    expect_equal(res[3], 2)
-    expect_equal(res[4], 3)
-    expect_equal(res[5], 4)
-    expect_equal(res[6], 4)
-    expect_equal(res[7], 3)
-    expect_equal(res[8], 2)
-    expect_equal(res[9], 1)
-    expect_equal(res[10], 0)
+        expect_length(res, 2)
+        expect_equal(res[1, 1], 0)
+        expect_equal(res[2, 1], 1)
+        expect_equal(res[3, 1], 2)
+        expect_equal(res[4, 1], 3)
+        expect_equal(res[5, 1], 4)
+        expect_equal(res[1, 2], 4)
+        expect_equal(res[2, 2], 3)
+        expect_equal(res[3, 2], 2)
+        expect_equal(res[4, 2], 1)
+        expect_equal(res[5, 2], 0)
+    }
 
     res.colnames <- colnames(res)
     expect_length(res.colnames, 2)    
