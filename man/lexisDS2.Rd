@@ -52,7 +52,7 @@ The second serverside function called by ds.lexis.
 \details{
 This is the assign
 function which actually creates
-the expanded dataframe containing surival data for a piecewise exponential
+the expanded dataframe containing survival data for a piecewise exponential
 regression. lexisDS2 also
 carries out a series of disclosure checks and if the arguments or data fail any of
 those tests,
