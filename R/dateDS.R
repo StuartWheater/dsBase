@@ -166,7 +166,7 @@ dateDS <- function(x=NULL, type=NULL,
     # inputs[[1]] = start date, inputs[[2]] = end date
     units <- list(
       years  = lubridate::years(1),
-      months = lubridate::month(1),
+      months = lubridate::months(1),
       days   = lubridate::days(1)
     )
     
