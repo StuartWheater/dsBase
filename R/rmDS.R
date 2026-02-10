@@ -9,7 +9,7 @@
 #' fail because the effect of the function is to delete the object and so
 #' it would be impossible to write it anywhere.
 #' @param x.names.transmit, the names of the objects to be deleted converted
-#' into transmissable form, a comma seperated list of character  string. The
+#' into transmissible form, a comma separated list of character string. The
 #' argument is specified via the <x.names> argument of ds.rm
 #' @return the specified object is deleted from the serverside. If this
 #' is successful the message "Object <x.names> successfully deleted" is returned

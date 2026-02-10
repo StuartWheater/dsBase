@@ -39,8 +39,11 @@ histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, nois
   ##################################################################
   
   # back-up current .Random.seed and revert on.exit
-  old_seed <- .Random.seed
-  on.exit(.Random.seed <- old_seed, add = TRUE)
+  if (exists(x = ".Random.seed", envir = globalenv())) {
+      assign(x = ".old_seed", value = .Random.seed, envir = parent.frame());
+      on.exit({ assign(x = ".Random.seed", value = parent.frame()$.old_seed, envir = globalenv()); remove(".old_seed", envir = parent.frame()) }, add = TRUE)
+  } else
+      on.exit(if (exists(x = ".Random.seed", envir = globalenv())) remove(".Random.seed", envir = globalenv()), add = TRUE)
   
   if (method.indicator==1){
 

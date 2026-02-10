@@ -1,6 +1,6 @@
 #' 
 #' @title Generates a density grid with or without a priori defined limits
-#' @description Generates a density grid that can then be used for heatmap or countour plots.
+#' @description Generates a density grid that can then be used for heatmap or contour plots.
 #' @details Invalid cells (cells with count < to the set filter value for the minimum allowed
 #' counts in table cells) are turn to 0.
 #' @param xvect a numerical vector

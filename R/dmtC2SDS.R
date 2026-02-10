@@ -22,10 +22,10 @@
 #' @param ncols.transmit specifies the number of columns in the matrix to be created.
 #' Fixed by the clientside function as equal to the number of columns in
 #' the clientside DMT to be transferred.
-#' @param colnames.transmit a parser-transmissable vector specifying the name of each column
+#' @param colnames.transmit a parser-transmissible vector specifying the name of each column
 #' in the DMT being transferred from clientside to serverside.
 #' Generated automatically by clientside function from colnames of clientside DMT.
-#' @param colclass.transmit a parser-transmissable vector specifying the class of the
+#' @param colclass.transmit a parser-transmissible vector specifying the class of the
 #' vector representing each individual column in the DMT to be transferred.
 #' Generated automatically by clientside function. This allows the transmission of DMTs
 #' containing columns with different classes.If something is going to go wrong with

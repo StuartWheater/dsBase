@@ -31,7 +31,7 @@
 recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.values.text=NULL, missing=NULL){
   
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
   
   #############################################################
   #MODULE 1: CAPTURE THE used nfilter SETTINGS

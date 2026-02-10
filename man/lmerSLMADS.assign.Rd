@@ -41,14 +41,14 @@ writes lmerMod object summarising the fitted model to the serverside.
 For more detailed information see help for ds.lmerSLMA.
 }
 \description{
-lmerSLMADS.assing is the same as lmerSLMADS2 which fits a linear
+lmerSLMADS.assign is the same as lmerSLMADS2 which fits a linear
 mixed effects model (lme) per study and saves the outcomes in each study
 }
 \details{
 lmerSLMADS.assign is a serverside function called by ds.lmerSLMA on the clientside.
 The analytic work engine is the lmer function in R which sits in the lme4 package.
 lmerSLMADS.assign fits a linear mixed effects model (lme) including both fixed and random
-effects - on data from each single data source and saves the regression outcomes on the serveside.
+effects - on data from each single data source and saves the regression outcomes on the serverside.
 }
 \author{
 TDemetris Avraam for DataSHIELD Development Team

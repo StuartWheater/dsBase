@@ -49,7 +49,7 @@ test_that("fixClassDS sets classes correctly", {
   )
 
   expect_equal(
-    classes_changed_df %>% map_chr(class) %>% unname(),
+    classes_changed_df %>% tidytable::map_chr(class) %>% unname(),
     c("factor", "factor", "numeric", "factor", "factor", "factor", "factor", "integer", "factor",
       "factor", "factor", "factor", "character", "logical", "factor", "integer", "integer",
       "numeric", "logical", "integer", "character", "numeric", "numeric", "character", "numeric",

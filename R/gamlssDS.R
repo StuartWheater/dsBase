@@ -1,5 +1,5 @@
 #'
-#' @title gamlssDS an aggregate function called by ds.galmss
+#' @title gamlssDS an aggregate function called by ds.gamlss
 #' @description This function calls the gamlssDS that is a wrapper function from 
 #' the gamlss R package. The function returns an object of class "gamlss", which 
 #' is a generalized additive model for location, scale and shape (GAMLSS). The 
