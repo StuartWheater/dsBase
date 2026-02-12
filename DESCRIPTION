@@ -74,7 +74,9 @@ Imports:
     childsds, 
     purrr, 
     tibble,
-    tidyselect
+    tidyselect,
+    stats,
+    lubridate
 Suggests:
     spelling,
     testthat,
