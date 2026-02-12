@@ -78,13 +78,9 @@ Imports:
     stats,
     lubridate
 Suggests:
-<<<<<<< HEAD
-    testthat
-=======
     spelling,
     testthat,
     tidytable
->>>>>>> upstream/v6.4.0-dev
 RoxygenNote: 7.3.3
 Encoding: UTF-8
 Language: en-GB
