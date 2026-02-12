@@ -40,11 +40,11 @@ the clientside DMT to be transferred.}
 Fixed by the clientside function as equal to the number of columns in
 the clientside DMT to be transferred.}
 
-\item{colnames.transmit}{a parser-transmissable vector specifying the name of each column
+\item{colnames.transmit}{a parser-transmissible vector specifying the name of each column
 in the DMT being transferred from clientside to serverside.
 Generated automatically by clientside function from colnames of clientside DMT.}
 
-\item{colclass.transmit}{a parser-transmissable vector specifying the class of the
+\item{colclass.transmit}{a parser-transmissible vector specifying the class of the
 vector representing each individual column in the DMT to be transferred.
 Generated automatically by clientside function. This allows the transmission of DMTs
 containing columns with different classes.If something is going to go wrong with

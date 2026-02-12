@@ -28,7 +28,7 @@
 BooleDS <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.assign.text, numeric.output=TRUE){
 
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
 
   V1 <- eval(parse(text=V1.name), envir = parent.frame())
   V2 <- eval(parse(text=V2.name), envir = parent.frame())
