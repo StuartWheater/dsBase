@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -42,6 +43,21 @@ test_that("simple namesDS, data.matrix", {
     expect_length(res, 2)
     expect_true("v1" %in% res)
     expect_true("v2" %in% res)
+})
+
+test_that("namesDS throws error when object does not exist", {
+    expect_error(
+        namesDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
+})
+
+test_that("namesDS throws error when object is not a list", {
+    bad_input <- c(1, 2, 3)
+    expect_error(
+        namesDS("bad_input"),
+        regexp = "not of class <list>"
+    )
 })
 
 #

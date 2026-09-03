@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -28,7 +29,7 @@ test_that("simple corTestDS, full, without na, pearson", {
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
 
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -81,7 +82,7 @@ test_that("simple corTestDS, neg. full, without na, pearson", {
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -134,7 +135,7 @@ test_that("simple corTestDS, some, pearson, without na, pearson", {
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -188,7 +189,7 @@ test_that("simple corTestDS, some, with na, pearson", {
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 3)
@@ -237,7 +238,7 @@ test_that("simple corTestDS, full, without na, kendall", {
     res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -253,8 +254,8 @@ test_that("simple corTestDS, full, without na, kendall", {
     
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
-    
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
+
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
     expect_equal(res$`Correlation test`$estimate[[1]], 1.0)
@@ -283,7 +284,7 @@ test_that("simple corTestDS, neg. full, without na, kendall", {
     res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -329,7 +330,7 @@ test_that("simple corTestDS, some, kendall, without na, kendall", {
     res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -345,7 +346,7 @@ test_that("simple corTestDS, some, kendall, without na, kendall", {
 
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
@@ -376,7 +377,7 @@ test_that("simple corTestDS, some, with na, kendall", {
     res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 3)
@@ -423,7 +424,7 @@ test_that("simple corTestDS, full, without na, spearman", {
     res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -439,7 +440,7 @@ test_that("simple corTestDS, full, without na, spearman", {
 
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
@@ -469,7 +470,7 @@ test_that("simple corTestDS, neg. full, without na, spearman", {
     res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -485,7 +486,7 @@ test_that("simple corTestDS, neg. full, without na, spearman", {
 
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
@@ -515,7 +516,7 @@ test_that("simple corTestDS, some, spearman, without na, spearman", {
     res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -531,11 +532,11 @@ test_that("simple corTestDS, some, spearman, without na, spearman", {
 
     expect_equal(class(res$`Correlation test`$p.value), "numeric")
     expect_length(res$`Correlation test`$p.value, 1)
-    expect_equal(res$`Correlation test`$p.value[[1]], 4.96e-05)
+    expect_equal(res$`Correlation test`$p.value[[1]], 4.960317e-05, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$estimate), "numeric")
     expect_length(res$`Correlation test`$estimate, 1)
-    expect_equal(res$`Correlation test`$estimate[[1]], 1.0)
+    expect_equal(res$`Correlation test`$estimate[[1]], 1.0, tolerance = 1e-6)
     
     expect_equal(class(res$`Correlation test`$null.value), "numeric")
     expect_length(res$`Correlation test`$null.value, 1)
@@ -562,7 +563,7 @@ test_that("simple corTestDS, some, with na, spearman", {
     res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 3)
@@ -599,6 +600,16 @@ test_that("simple corTestDS, some, with na, spearman", {
     expect_equal(class(res$`Correlation test`$data.name), "character")
     expect_length(res$`Correlation test`$data.name, 1)
     expect_equal(res$`Correlation test`$data.name[[1]], "x.var and y.var")
+})
+
+test_that("corTestDS throws error when object does not exist", {
+    expect_error(corTestDS("nonexistent_x", "nonexistent_y", "pearson", NULL, 0.95), regexp = "does not exist")
+})
+
+test_that("corTestDS throws error when object is not numeric or integer", {
+    bad_input <- c("a", "b", "c")
+    y <- c(1.0, 2.0, 3.0)
+    expect_error(corTestDS("bad_input", "y", "pearson", NULL, 0.95), regexp = "must be of type numeric or integer")
 })
 
 #

@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -40,6 +41,21 @@ test_that("simple colnamesDS, data.matrix", {
     expect_length(res, 2)
     expect_true("v1" %in% res)
     expect_true("v2" %in% res)
+})
+
+test_that("colnamesDS throws error when object does not exist", {
+  expect_error(
+    colnamesDS("nonexistent_object"),
+    regexp = "does not exist"
+  )
+})
+
+test_that("colnamesDS throws error when object is not data.frame or matrix", {
+  bad_input <- list(a = 1:3, b = 4:6)
+  expect_error(
+    colnamesDS("bad_input"),
+    regexp = "must be of type data.frame or matrix"
+  )
 })
 
 #

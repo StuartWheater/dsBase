@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -187,6 +188,13 @@ test_that("simple completeCasesDS, data.matrix, with NAs", {
     expect_length(res.colnames, 2)
     expect_equal(res.colnames[1], "v1")
     expect_equal(res.colnames[2], "v2")
+})
+
+test_that("completeCasesDS throws error when object does not exist", {
+    expect_error(
+        completeCasesDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
 })
 
 #

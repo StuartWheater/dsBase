@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2024 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2024-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -36,7 +36,7 @@ test_that("numeric varDS - performance", {
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        varDS(input)
+        varDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()
@@ -45,8 +45,8 @@ test_that("numeric varDS - performance", {
     .current.rate   <- .count / (difftime(.current.time, .start.time, units = "secs")[[1]])
     .reference.rate <- perf.reference.rate("varDS::perf::numeric::0")
     if (any(length(.reference.rate) == 0) || any(is.null(.reference.rate))) {
-        print(paste("varDS::perf::numeric::0 ", .current.rate, 0.5, 2.0))
-        perf.reference.save("varDS::perf::numeric::0", .current.rate, 0.5, 2.0)
+        print(paste("varDS::perf::numeric::0 ", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper()))
+        perf.reference.save("varDS::perf::numeric::0", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper())
     } else {
         print(paste("varDS::perf::numeric::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''))
     }
@@ -71,7 +71,7 @@ test_that("numeric varDS, with NA - performance", {
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        varDS(input)
+        varDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()
@@ -80,8 +80,8 @@ test_that("numeric varDS, with NA - performance", {
     .current.rate   <- .count / (difftime(.current.time, .start.time, units = "secs")[[1]])
     .reference.rate <- perf.reference.rate("varDS::perf::numberAndNA::0")
     if (any(length(.reference.rate) == 0) || any(is.null(.reference.rate))) {
-        print(paste("varDS::perf::numberAndNA::0 ", .current.rate, 0.5, 2.0))
-        perf.reference.save("varDS::perf::numberAndNA::0", .current.rate, 0.5, 2.0)
+        print(paste("varDS::perf::numberAndNA::0 ", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper()))
+        perf.reference.save("varDS::perf::numberAndNA::0", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper())
     } else {
         print(paste("varDS::perf::numberAndNA::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''))
     }

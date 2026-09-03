@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -87,6 +88,13 @@ test_that("simple dataFrameFillDS, ascending, numeric", {
     expect_equal(res.v6.levels[1], "1")
     expect_equal(res.v6.levels[2], "2")
     expect_equal(res.v6.levels[3], "3")
+})
+
+test_that("dataFrameFillDS errors when object does not exist", {
+    expect_error(
+        dataFrameFillDS("nonexistent_object", "a,b", "numeric,numeric", NULL),
+        regexp = "does not exist"
+    )
 })
 
 #

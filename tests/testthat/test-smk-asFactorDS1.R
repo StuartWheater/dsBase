@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -20,7 +21,6 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("asFactorDS1::smk::simple")
 test_that("simple asFactorDS1", {
     input <- c(2.0, 1.0, 3.0, 3.0, 3.0, 1.0, 2.0, 2.0, 1.0, 2.0)
 
@@ -33,10 +33,6 @@ test_that("simple asFactorDS1", {
     expect_equal(res[3], "3")
 })
 
-#
-# Done
-#
-
-# context("asFactorDS1::smk::shutdown")
-
-# context("asFactorDS1::smk::done")
+test_that("asFactorDS1 errors when serverside object does not exist", {
+    expect_error(asFactorDS1("nonexistent_object"), regexp = "does not exist")
+})

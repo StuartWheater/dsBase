@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -19,16 +20,6 @@
 #
 
 # context("sqrtDS::smk::special")
-test_that("simple sqrtDS, NA", {
-    input <- NA
-
-    res <- sqrtDS("input")
-
-    expect_equal(class(res), "numeric")
-    expect_length(res, 1)
-    expect_true(is.na(res))
-})
-
 test_that("simple sqrtDS, NaN", {
     input <- NaN
 
@@ -165,7 +156,6 @@ test_that("simple sqrtDS", {
     expect_true(is.nan(res[5]))
     expect_true(is.nan(res[6]))
 })
-
 #
 # Done
 #

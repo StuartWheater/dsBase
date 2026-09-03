@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -227,6 +228,13 @@ test_that("special classDS, NULL", {
     expect_equal(class(res), "character")
     expect_length(res, 1)
     expect_equal(res, "NULL")
+})
+
+test_that("classDS throws error when object does not exist", {
+    expect_error(
+        classDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
 })
 
 #

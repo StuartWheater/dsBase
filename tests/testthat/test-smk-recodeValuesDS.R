@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -120,6 +121,22 @@ test_that("simple recodeValuesDS, character input with missings", {
   expect_equal(res[5], 'bb')
   expect_equal(res[6], 'aa')
   expect_true(is.na(res[7]))
+})
+
+test_that("recodeValuesDS errors when object does not exist", {
+    expect_error(
+        recodeValuesDS("nonexistent_object", "1,2", "10,20", NULL),
+        regexp = "does not exist"
+    )
+})
+
+test_that("recodeValuesDS errors when object has wrong type", {
+    input <- list(a = 1, b = 2)
+
+    expect_error(
+        recodeValuesDS("input", "1,2", "10,20", NULL),
+        regexp = "must be of type"
+    )
 })
 
 #
