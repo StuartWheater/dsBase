@@ -12,10 +12,6 @@
 # Set up
 #
 
-# avoid performance tests on CRAN and GitHub Actions
-testthat::skip_on_cran()
-testthat::skip_on_ci()
-
 # context("meanDS::perf::setup")
 
 set.standard.disclosure.settings()
